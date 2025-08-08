@@ -34,12 +34,14 @@ export default function Home() {
       title: "mintCraft",
       description: "mintCraft is a decentralized marketplace where AI generates content (art, music, text, code) that's instantly minted as NFTs on Solana, with built-in ownership tracking and monetization. Users can also register their own AI models and earn from usage fees.",
       link: "Not Live Yet",
+      working_demo:"https://vimeo.com/1108440671?share=copy",
       github: "https://github.com/akshatsrivastava11/mintCraft",
       technologies: ["Solana", "Rust", "Anchor", "Next.js", "TypeScript", "Tailwind CSS", "Express", "tRPC", "Prisma", "PostgreSQL", "IPFS", "codama", "zod"],
     },
     {
       title: "Learn",
       description: "Learn is a platform that allows user to create flashcards and quizzes from the pdf provided by the user. It uses AI to generate questions and answers from the pdf and also allows user to create their own questions and answers.",
+      working_demo:"https://vimeo.com/1108447544?share=copy",
       link: "https://learn-akshat.vercel.app/",
       github: "https://github.com/akshatsrivastava11/learn",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Express", "Prisma", "PostgreSQL", "zod", "gemini", "OpenAI", "react-pdf", "react-hot-toast"],
@@ -244,7 +246,7 @@ export default function Home() {
                           <li className="group hover:translate-x-1 transition-all duration-300 ease-out">
                             <div className="flex items-baseline justify-between mb-1">
                               <h3 className="text-md font-medium text-zinc-100">{project.title}</h3>
-                              <div className="flex flex-row gap-2">
+                              <div className="flex flex-row gap-4">
                                 {project.github ? (
                                   <a
                                     href={project.github}
@@ -269,6 +271,17 @@ export default function Home() {
                                 ) : project.link === "Not Live Yet" ? (
                                   <span className="text-xs text-zinc-600">Not Live Yet</span>
                                 ) : null}
+                                {project.working_demo && (
+                                  <a
+                                    href={project.working_demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-100 transition-colors"
+                                    onClick={() => track(`${project.title}_demo_clicked`)}
+                                  >
+                                    Working Demo <ExternalLink className="w-3 h-3" />
+                                  </a>
+                                )}
                               </div>
                             </div>
                             <p className="text-sm text-zinc-400 mb-2">{project.description}</p>
