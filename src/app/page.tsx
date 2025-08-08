@@ -173,19 +173,19 @@ export default function Home() {
                   <Github />
                 </a>
                 <a 
-                  href="https://twitter.com/akshatsrivastava11"
+                  href="https://x.com/akshonite"
                   className="transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-0.5"
                 >
                   <X />
                 </a>
                 <a 
-                  href="https://linkedin.com/in/akshatsrivastava11"
+                  href="http://linkedin.com/in/akshat-srivastava-173527314"
                   className="transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-0.5"
                 >
                   <LinkedIn />
                 </a>
                 <a 
-                  href="mailto:akshat@example.com"
+                  href="mailto:akshatsri1108@gmail.com"
                   className="transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-0.5"
                 >
                   <Email />
