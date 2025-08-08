@@ -156,8 +156,9 @@ export default function Home() {
             <AnimateIn variant="fadeUp" delay={0.4}>
               <div className="mb-8">
                 <p className="text-sm text-zinc-400 max-w-xl">
-                  Software Engineer from Delhi. Contact me below. Currently building{" "}
-                  <span className="text-zinc-100 font-medium">mintCraft</span>
+                  Software Engineer from Delhi — crafting    
+                  <span className="text-zinc-100 font-medium">  mintCraft  </span>
+                  and more.{" "}
                 </p>
               </div>
             </AnimateIn>
