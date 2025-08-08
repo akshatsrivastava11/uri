@@ -1,6 +1,5 @@
-import type { SVGProps } from "react";
 
-const Rust = (props: SVGProps<SVGSVGElement>) => (
+const Rust = () => (
 <svg version="1.1" height="45" width="45"     viewBox="0 0 106 106" // ensures full logo fits
  xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
 <g id="logo" transform="translate(48, 48)">

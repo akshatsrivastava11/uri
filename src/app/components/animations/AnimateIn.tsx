@@ -18,42 +18,44 @@ export function AnimateIn({ children, delay = 0, className = "", variant = "fade
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsVisible(true);
-      if (once) setHasAnimated(true);
-    }, delay * 1000);
+useEffect(() => {
+  const timeout = setTimeout(() => {
+    setIsVisible(true);
+    if (once) setHasAnimated(true);
+  }, delay * 1000);
 
-    if (!once && typeof window !== "undefined" && "IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              if (!hasAnimated || !once) {
-                setIsVisible(true);
-              }
-            } else if (!once) {
-              setIsVisible(false);
+  if (!once && typeof window !== "undefined" && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (!hasAnimated || !once) {
+              setIsVisible(true);
             }
-          });
-        },
-        { threshold: 0.1 }
-      );
+          } else if (!once) {
+            setIsVisible(false);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
-
-      return () => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
-        }
-        clearTimeout(timeout);
-      };
+    const node = ref.current; // 👈 snapshot the current element
+    if (node) {
+      observer.observe(node);
     }
 
-    return () => clearTimeout(timeout);
-  }, [delay, once, hasAnimated]);
+    return () => {
+      if (node) {
+        observer.unobserve(node);
+      }
+      clearTimeout(timeout);
+    };
+  }
+
+  return () => clearTimeout(timeout);
+}, [delay, once, hasAnimated]);
+
 
   const getAnimationStyles = () => {
     if (hasAnimated && once) return {};

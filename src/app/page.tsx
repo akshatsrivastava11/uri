@@ -1,5 +1,4 @@
 'use client';
-import Image from "next/image";
 import Github from "./components/icons/Github";
 import X from "./components/icons/x";
 import LinkedIn from "./components/icons/LinkedIn";
@@ -14,7 +13,6 @@ import { cn } from "@/lib/utils";
 import { track } from "@vercel/analytics";
 import { ExternalLink } from 'lucide-react';
 import { AnimateIn } from "./components/animations/AnimateIn";
-import Trpc from "./components/icons/trpc";
 import React from "./components/icons/ReactIcon";
 import Nextjs from "./components/icons/Next";
 import TailwindCSS from "./components/icons/Tailwind";
@@ -149,7 +147,7 @@ export default function Home() {
         <AnimateIn variant="fadeUp">
           <section className="mb-6">
             <AnimateIn variant="fadeUp" delay={0.2}>
-              <h1 className="text-2xl font-medium tracking-tight mb-4">Hey! I'm Akshat</h1>
+              <h1 className="text-2xl font-medium tracking-tight mb-4">Hey! I&apos;m Akshat</h1>
             </AnimateIn>
             
             {/* Description */}
@@ -306,7 +304,6 @@ export default function Home() {
                               <h3 className="text-md font-medium text-zinc-100">
                                 {job.role} {job.role.toLowerCase().includes("freelance") ? "" : "at"} {job.company}
                               </h3>
-                              <span className="text-xs text-zinc-500">{job.period}</span>
                             </div>
                             <p className="text-sm text-zinc-400 mb-2">{job.description}</p>
                             <div className="flex flex-wrap gap-2">
