@@ -1,89 +1,106 @@
-import React, { useRef, useEffect, ReactNode } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+"use client";
 
-gsap.registerPlugin(ScrollTrigger);
+import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from "react";
 
-interface AnimatedContentProps {
-  children: ReactNode;
-  distance?: number;
-  direction?: "vertical" | "horizontal";
-  reverse?: boolean;
-  duration?: number;
-  ease?: string | ((progress: number) => number);
-  initialOpacity?: number;
-  animateOpacity?: boolean;
-  scale?: number;
-  threshold?: number;
+type AnimationVariant = "fadeUp" | "fadeLeft" | "fadeRight" | "reveal" | "scale" | "none";
+
+type AnimateInProps = {
+  children: React.ReactNode;
   delay?: number;
-  onComplete?: () => void;
-}
+  className?: string;
+  variant?: AnimationVariant;
+  once?: boolean;
+};
 
-const AnimatedContent: React.FC<AnimatedContentProps> = ({
-  children,
-  distance = 100,
-  direction = "vertical",
-  reverse = false,
-  duration = 0.8,
-  ease = "power3.out",
-  initialOpacity = 0,
-  animateOpacity = true,
-  scale = 1,
-  threshold = 0.1,
-  delay = 0,
-  onComplete,
-}) => {
+export function AnimateIn({ children, delay = 0, className = "", variant = "fadeUp", once = true }: AnimateInProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    const timeout = setTimeout(() => {
+      setIsVisible(true);
+      if (once) setHasAnimated(true);
+    }, delay * 1000);
 
-    const axis = direction === "horizontal" ? "x" : "y";
-    const offset = reverse ? -distance : distance;
-    const startPct = (1 - threshold) * 100;
+    if (!once && typeof window !== "undefined" && "IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (!hasAnimated || !once) {
+                setIsVisible(true);
+              }
+            } else if (!once) {
+              setIsVisible(false);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
 
-    gsap.set(el, {
-      [axis]: offset,
-      scale,
-      opacity: animateOpacity ? initialOpacity : 1,
-    });
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
 
-    gsap.to(el, {
-      [axis]: 0,
-      scale: 1,
-      opacity: 1,
-      duration,
-      ease,
-      delay,
-      onComplete,
-      scrollTrigger: {
-        trigger: el,
-        start: `top ${startPct}%`,
-        toggleActions: "play none none none",
-        once: true,
-      },
-    });
+      return () => {
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
+        clearTimeout(timeout);
+      };
+    }
 
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      gsap.killTweensOf(el);
+    return () => clearTimeout(timeout);
+  }, [delay, once, hasAnimated]);
+
+  const getAnimationStyles = () => {
+    if (hasAnimated && once) return {};
+
+    const baseStyles = {
+      opacity: isVisible ? 1 : 0,
+      transform: "none",
+      transition: `opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1)`,
+      transitionDelay: `${delay}s`,
     };
-  }, [
-    distance,
-    direction,
-    reverse,
-    duration,
-    ease,
-    initialOpacity,
-    animateOpacity,
-    scale,
-    threshold,
-    delay,
-    onComplete,
-  ]);
 
-  return <div ref={ref}>{children}</div>;
-};
+    if (!isVisible) {
+      switch (variant) {
+        case "fadeUp":
+          return { ...baseStyles, transform: "translateY(20px)" };
+        case "fadeLeft":
+          return { ...baseStyles, transform: "translateX(-20px)" };
+        case "fadeRight":
+          return { ...baseStyles, transform: "translateX(20px)" };
+        case "scale":
+          return { ...baseStyles, transform: "scale(0.95)" };
+        case "reveal":
+          return {
+            ...baseStyles,
+            clipPath: "inset(0 100% 0 0)",
+            transform: "none",
+          };
+        case "none":
+          return { opacity: 1 };
+        default:
+          return baseStyles;
+      }
+    }
 
-export default AnimatedContent;
+    if (variant === "reveal" && isVisible) {
+      return {
+        ...baseStyles,
+        clipPath: "inset(0 0 0 0)",
+      };
+    }
+
+    return baseStyles;
+  };
+
+  return (
+    <div ref={ref} className={cn(className)} style={getAnimationStyles()}>
+      {children}
+    </div>
+  );
+}
