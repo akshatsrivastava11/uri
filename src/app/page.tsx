@@ -35,7 +35,7 @@ export default function Home() {
       description: "mintCraft is a decentralized marketplace where AI generates content (art, music, text, code) that's instantly minted as NFTs on Solana, with built-in ownership tracking and monetization. Users can also register their own AI models and earn from usage fees.",
       link: "Not Live Yet",
       working_demo:"https://vimeo.com/1108440671?share=copy",
-      github: "https://github.com/akshatsrivastava11/mintCraft",
+      github: "https://github.com/akshatsrivastava11/Q3_25_Builder_AkshatSrivastava",
       technologies: ["Solana", "Rust", "Anchor", "Next.js", "TypeScript", "Tailwind CSS", "Express", "tRPC", "Prisma", "PostgreSQL", "IPFS", "codama", "zod"],
     },
     {
