@@ -145,6 +145,16 @@ export default function Home() {
   return (
     <div className="bg-[#1c1c21] min-h-[100vh] text-zinc-100">
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-6">
+      <div className="text-sm text-zinc-400 ml-[30vw]">
+    <a href="./Resume (4).pdf"
+      download="AkshatSrivastava.pdf"
+    >
+
+    Documented CV
+
+    </a>
+
+      </div>
         {/* Header */}
         <AnimateIn variant="fadeUp">
           <section className="mb-6">
