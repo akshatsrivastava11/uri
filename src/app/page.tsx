@@ -45,6 +45,7 @@ export default function Home() {
       link: "https://learn-akshat.vercel.app/",
       github: "https://github.com/akshatsrivastava11/learn",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Express", "Prisma", "PostgreSQL", "zod", "gemini", "OpenAI", "react-pdf", "react-hot-toast"],
+      down:true
     },
     {
       title: "Histograph",
@@ -269,6 +270,11 @@ export default function Home() {
                                     GitHub <ExternalLink className="w-3 h-3" />
                                   </a>
                                 ) : null}
+                                {project.down && (
+                                  <p
+                                  className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-100 transition-colors"
+                                  >Might be down due to API Limitations</p>
+                                )}
                                 {project.link && project.link !== "Not Live Yet" ? (
                                   <a
                                     href={project.link}
