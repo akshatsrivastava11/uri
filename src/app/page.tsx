@@ -57,8 +57,8 @@ export default function Home() {
     {
       title: "2d-metaverse api",
       description: "a 2d-metaverse api completely written in golang along with the test written in js",
-      github: "https://github.com/akshatsrivastava11/2d-metaverse",
-      link: "https://github.com/akshatsrivastava11/2d-metaverse",
+      github: "https://github.com/akshatsrivastava11/metaverse-2d",
+      link: "https://github.com/akshatsrivastava11/metaverse-2d",
       technologies: ["gorilla/mux", "prisma-client-go", "prisma", "postgres", "jest"]
     }
   ];
