@@ -34,18 +34,18 @@ export default function Home() {
       title: "mintCraft",
       description: "mintCraft is a decentralized marketplace where AI generates content (art, music, text, code) that's instantly minted as NFTs on Solana, with built-in ownership tracking and monetization. Users can also register their own AI models and earn from usage fees.",
       link: "Not Live Yet",
-      working_demo:"https://vimeo.com/1108440671?share=copy",
-      github: "https://github.com/akshatsrivastava11/Q3_25_Builder_AkshatSrivastava",
+      working_demo: "https://vimeo.com/1108440671?share=copy",
+      github: "https://github.com/akshatsrivastava11/mintCraft",
       technologies: ["Solana", "Rust", "Anchor", "Next.js", "TypeScript", "Tailwind CSS", "Express", "tRPC", "Prisma", "PostgreSQL", "IPFS", "codama", "zod"],
     },
     {
       title: "Learn",
       description: "Learn is a platform that allows user to create flashcards and quizzes from the pdf provided by the user. It uses AI to generate questions and answers from the pdf and also allows user to create their own questions and answers.",
-      working_demo:"https://vimeo.com/1108447544?share=copy",
+      working_demo: "https://vimeo.com/1108447544?share=copy",
       link: "https://learn-akshat.vercel.app/",
       github: "https://github.com/akshatsrivastava11/learn",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Express", "Prisma", "PostgreSQL", "zod", "gemini", "OpenAI", "react-pdf", "react-hot-toast"],
-      down:true
+      down: true
     },
     {
       title: "Histograph",
@@ -113,8 +113,8 @@ export default function Home() {
         title: "PostgreSQL"
       },
       {
-        Logo:Prisma,
-        title:"Prisma"
+        Logo: Prisma,
+        title: "Prisma"
       }
     ],
     languages: [
@@ -146,56 +146,56 @@ export default function Home() {
   return (
     <div className="bg-[#1c1c21] min-h-[100vh] text-zinc-100">
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-6">
-      <div className="text-sm text-zinc-400 ml-[30vw]">
-    <a href="./Resume (4).pdf"
-      download="AkshatSrivastava.pdf"
-    >
+        <div className="text-sm text-zinc-400 ml-[30vw]">
+          <a href="./Resume (4).pdf"
+            download="AkshatSrivastava.pdf"
+          >
 
-    Documented CV
+            Documented CV
 
-    </a>
+          </a>
 
-      </div>
+        </div>
         {/* Header */}
         <AnimateIn variant="fadeUp">
           <section className="mb-6">
             <AnimateIn variant="fadeUp" delay={0.2}>
               <h1 className="text-2xl font-medium tracking-tight mb-4">Hey! I&apos;m Akshat</h1>
             </AnimateIn>
-            
+
             {/* Description */}
             <AnimateIn variant="fadeUp" delay={0.4}>
               <div className="mb-8">
                 <p className="text-sm text-zinc-400 max-w-xl">
-                  Software Engineer from Delhi — crafting    
+                  Software Engineer from Delhi — crafting
                   <span className="text-zinc-100 font-medium">  mintCraft  </span>
                   and more.{" "}
                 </p>
               </div>
             </AnimateIn>
-            
+
             {/* Socials */}
             <AnimateIn variant="fadeUp" delay={0.6}>
               <div className="flex gap-4 mb-8">
-                <a 
+                <a
                   href="https://github.com/akshatsrivastava11"
                   className="transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-0.5"
                 >
                   <Github />
                 </a>
-                <a 
+                <a
                   href="https://x.com/akshonite"
                   className="transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-0.5"
                 >
                   <X />
                 </a>
-                <a 
+                <a
                   href="http://linkedin.com/in/akshat-srivastava-173527314"
                   className="transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-0.5"
                 >
                   <LinkedIn />
                 </a>
-                <a 
+                <a
                   href="mailto:akshatsri1108@gmail.com"
                   className="transition-all duration-300 ease-out hover:scale-110 hover:-translate-y-0.5"
                 >
@@ -209,41 +209,26 @@ export default function Home() {
         {/* Projects */}
         <Tabs defaultValue="projects">
           <AnimateIn variant="fadeUp" delay={0.2}>
-            <TabsList className="mb-4 border-none bg-transparent p-0 -ml-[8px]">
-              <TabsTrigger
-                value="projects"
-                className={cn(
-                  "!bg-transparent !border-none !shadow-none",
-                  "!font-light data-[state=active]:!font-bold transition-all duration-300 ease-out",
-                  "!text-zinc-400",
-                  "data-[state=active]:!text-zinc-100"
-                )}
-              >
-                Projects
-              </TabsTrigger>
-              <TabsTrigger
-                value="experience"
-                className={cn(
-                  "!bg-transparent !border-none !shadow-none",
-                  "!font-light data-[state=active]:!font-bold transition-all duration-300 ease-out",
-                  "!text-zinc-400",
-                  "data-[state=active]:!text-zinc-100"
-                )}
-              >
-                Experience
-              </TabsTrigger>
-              <TabsTrigger
-                value="tools"
-                className={cn(
-                  "!bg-transparent !border-none !shadow-none",
-                  "!font-light data-[state=active]:!font-bold transition-all duration-300 ease-out",
-                  "!text-zinc-400",
-                  "data-[state=active]:!text-zinc-100"
-                )}
-              >
-                Tools
-              </TabsTrigger>
+            <TabsList className="mb-4 flex gap-3 border-none bg-transparent p-0">
+              {[
+                { label: "Projects", value: "projects" },
+                { label: "Experience", value: "experience" },
+                { label: "Tools", value: "tools" },
+              ].map(({ label, value }) => (
+                <TabsTrigger
+                  key={value}
+                  value={value}
+                  className={cn(
+                    "px-4 py-1 rounded-md border border-transparent text-zinc-400 font-light transition-all duration-300 ease-out",
+                    "data-[state=active]:border-zinc-600 data-[state=active]:text-zinc-100 data-[state=active]:font-semibold data-[state=active]:bg-zinc-800/50",
+                    "hover:text-zinc-200"
+                  )}
+                >
+                  {label}
+                </TabsTrigger>
+              ))}
             </TabsList>
+
           </AnimateIn>
 
           <TabsContent value="projects">
@@ -272,7 +257,7 @@ export default function Home() {
                                 ) : null}
                                 {project.down && (
                                   <p
-                                  className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-100 transition-colors"
+                                    className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-100 transition-colors"
                                   >Might be down due to API Limitations</p>
                                 )}
                                 {project.link && project.link !== "Not Live Yet" ? (
