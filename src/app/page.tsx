@@ -145,6 +145,17 @@ export default function Home() {
 
   return (
     <div className="bg-[#1c1c21] min-h-[100vh] text-zinc-100">
+        <div
+    className="fixed inset-0 z-0 h-screen w-screen bg-cover bg-center bg-no-repeat"
+    style={{
+      backgroundImage: `url(/bg.png)`,
+      backgroundSize: '150%',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      opacity:0.05,
+    zIndex: 2
+    }}
+  />
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-6">
         <div className="text-sm text-zinc-400 ml-[30vw]">
           <a href="./Resume (4).pdf"
