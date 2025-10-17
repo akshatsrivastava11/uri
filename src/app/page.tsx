@@ -153,7 +153,8 @@ export default function Home() {
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       opacity:0.05,
-    zIndex: 2
+    zIndex: 2,
+    pointerEvents:'none'
     }}
   />
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-6">
