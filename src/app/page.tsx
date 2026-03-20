@@ -25,14 +25,28 @@ import PostgreSQL from "./components/icons/postgres";
 import Git from "./components/icons/Git";
 import Rust from "./components/icons/Rust";
 import Golang from "./components/icons/Golang";
-import Solana from "./components/icons/solana";
 import Prisma from "./components/icons/prisma";
+import Docker from "./components/icons/Docker";
+import K8s from "./components/icons/K8s";
+import Firebase from "./components/icons/Firebase";
+import Supabase from "./components/icons/Supabase";
+import Redis from "./components/icons/Redis";
+import Kafka from "./components/icons/Kafka";
+import RabbitMQ from "./components/icons/RabbitMQ";
+import Ngrok from "./components/icons/Ngrok";
 
 export default function Home() {
   const projects = [
     {
+      title: "Raft Consensus Simulator",
+      description: "A simulation of the Raft distributed consensus algorithm to manage a replicated log. Implements Leader Election, Log Replication, and Safety mechanisms to ensure consistency across distributed nodes.",
+      github: "https://github.com/akshatsrivastava11/raft-consensus-sim",
+      link: "https://github.com/akshatsrivastava11/raft-consensus-sim",
+      technologies: ["Golang", "net/rpc", "sync", "goroutines", "channels"],
+    },
+    {
       title: "mintCraft",
-      description: "mintCraft is a decentralized marketplace where AI generates content (art, music, text, code) that's instantly minted as NFTs on Solana, with built-in ownership tracking and monetization. Users can also register their own AI models and earn from usage fees.",
+      description: "mintCraft is an AI-powered content marketplace — users generate art, music, text, and code through registered AI models, with built-in ownership tracking and monetization for creators.",
       link: "Not Live Yet",
       working_demo: "https://vimeo.com/1108440671?share=copy",
       github: "https://github.com/akshatsrivastava11/mintCraft",
@@ -48,27 +62,28 @@ export default function Home() {
       down: true
     },
     {
-      title: "Histograph",
-      description: "Histograph is a terminal-based tool that fetches the browser's history and builds a graph of the user's browsing history. It allows users to visualize their browsing patterns and discover new connections between websites.",
-      link: "github.com/akshatsrivastava11/Histograph",
-      github: "https://github.com/akshatsrivastava11/Histograph",
-      technologies: ["Golang", "bubbles", "bubbletea", "sqlite3"]
-    },
-    {
-      title: "2d-metaverse api",
-      description: "a 2d-metaverse api completely written in golang along with the test written in js",
-      github: "https://github.com/akshatsrivastava11/metaverse-2d",
-      link: "https://github.com/akshatsrivastava11/metaverse-2d",
-      technologies: ["gorilla/mux", "prisma-client-go", "prisma", "postgres", "jest"]
+      title: "Kademlia DHT",
+      description: "An implementation of the Kademlia distributed hash table protocol in Go. Supports peer discovery, key-value lookups, and node routing using XOR-based distance metrics across a fully decentralised P2P network.",
+      github: "https://github.com/akshatsrivastava11/kademlia-implementation",
+      link: "https://github.com/akshatsrivastava11/kademlia-implementation",
+      technologies: ["Golang", "net/rpc", "goroutines", "channels", "XOR routing"],
     }
   ];
 
+
   const experience = [
     {
-      role: "Builder",
-      company: "Turbin3",
-      description: "Intensive Solana blockchain development program focusing on Rust and TypeScript. Building full-stack decentralized applications, smart contract development, and Web3 integrations on Solana's high-performance blockchain.",
-      technologies: ["Solana", "Rust", "anchor", "IPFS", "codama", "@solana/web3.js", "gill", "umi", "metaplex"],
+      role: "Backend Developer",
+      company: "Credible",
+      period: "Oct 2025 — Present",
+      type: "Remote · Finance",
+      bullets: [
+        "Engineered core financial infrastructure using TypeScript and JavaScript, focusing on high-availability services and scalable MongoDB schemas for internal financial data.",
+        "Developed a decoupled microservices architecture using RabbitMQ for asynchronous task processing and Redis for low-latency data caching and real-time state management.",
+        "Integrated Sentry for proactive error tracking and performance monitoring, significantly reducing MTTR for critical production issues.",
+        "Streamlined data ingestion pipelines to handle high-throughput financial transactions while ensuring consistency and fault tolerance.",
+      ],
+      technologies: ["TypeScript", "JavaScript", "Node.js", "MongoDB", "RabbitMQ", "Redis", "Sentry"],
     }
   ];
 
@@ -85,10 +100,6 @@ export default function Home() {
       {
         Logo: TailwindCSS,
         title: "Tailwind CSS"
-      },
-      {
-        Logo: TypeScript,
-        title: "TypeScript"
       },
     ],
     Backend: [
@@ -115,6 +126,26 @@ export default function Home() {
       {
         Logo: Prisma,
         title: "Prisma"
+      },
+      {
+        Logo: Firebase,
+        title: "Firebase"
+      },
+      {
+        Logo: Supabase,
+        title: "Supabase"
+      },
+      {
+        Logo: Redis,
+        title: "Redis"
+      },
+      {
+        Logo: Kafka,
+        title: "Kafka"
+      },
+      {
+        Logo: RabbitMQ,
+        title: "RabbitMQ"
       }
     ],
     languages: [
@@ -137,26 +168,34 @@ export default function Home() {
         title: "Git"
       },
       {
-        Logo: Solana,
-        title: "Solana"
+        Logo: Docker,
+        title: "Docker"
+      },
+      {
+        Logo: K8s,
+        title: "Kubernetes"
+      },
+      {
+        Logo: Ngrok,
+        title: "Ngrok"
       }
     ]
   };
 
   return (
     <div className="bg-[#1c1c21] min-h-[100vh] text-zinc-100">
-        <div
-    className="fixed inset-0 z-0 h-screen w-screen bg-cover bg-center bg-no-repeat"
-    style={{
-      backgroundImage: `url(/bg.png)`,
-      backgroundSize: '150%',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      opacity:0.05,
-    zIndex: 2,
-    pointerEvents:'none'
-    }}
-  />
+      <div
+        className="fixed inset-0 z-0 h-screen w-screen bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(/bg.png)`,
+          backgroundSize: '175% 200%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.05,
+          zIndex: 2,
+          pointerEvents: 'none'
+        }}
+      />
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-6">
         <div className="text-sm text-zinc-400 ml-[30vw]">
           <a href="./Resume (4).pdf"
@@ -179,9 +218,9 @@ export default function Home() {
             <AnimateIn variant="fadeUp" delay={0.4}>
               <div className="mb-8">
                 <p className="text-sm text-zinc-400 max-w-xl">
-                  Software Engineer from Delhi — crafting
-                  <span className="text-zinc-100 font-medium">  mintCraft  </span>
-                  and more.{" "}
+                  Software Engineer from Delhi — building
+                  <span className="text-zinc-100 font-medium">  scalable full-stack applications  </span>
+                  and shipping fast.{" "}
                 </p>
               </div>
             </AnimateIn>
@@ -231,9 +270,9 @@ export default function Home() {
                   key={value}
                   value={value}
                   className={cn(
-                    "px-4 py-1 rounded-md border border-transparent text-zinc-400 font-light transition-all duration-300 ease-out",
-                    "data-[state=active]:border-zinc-600 data-[state=active]:text-zinc-100 data-[state=active]:font-semibold data-[state=active]:bg-zinc-800/50",
-                    "hover:text-zinc-200"
+                    "px-5 py-1.5 rounded-sm text-zinc-400 font-light transition-all duration-200 ease-out",
+                    "data-[state=active]:bg-zinc-800 data-[state=active]:text-zinc-100 data-[state=active]:font-medium",
+                    "hover:bg-zinc-800/40 hover:text-zinc-200"
                   )}
                 >
                   {label}
@@ -308,6 +347,7 @@ export default function Home() {
                               ))}
                             </div>
                           </li>
+                          <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-zinc-600 to-transparent" />
                         </AnimateIn>
                       );
                     })}
@@ -327,12 +367,29 @@ export default function Home() {
                       return (
                         <AnimateIn key={index} delay={delay} variant="fadeLeft">
                           <li className="group hover:translate-x-1 transition-all duration-300 ease-out">
-                            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-1">
+                            {/* Title row */}
+                            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-0.5">
                               <h3 className="text-md font-medium text-zinc-100">
-                                {job.role} {job.role.toLowerCase().includes("freelance") ? "" : "at"} {job.company}
+                                {job.role} at {job.company}
                               </h3>
+                              {job.period && (
+                                <span className="text-xs text-zinc-600 mt-0.5 sm:mt-0">{job.period}</span>
+                              )}
                             </div>
-                            <p className="text-sm text-zinc-400 mb-2">{job.description}</p>
+                            {/* Type/location badge */}
+                            {job.type && (
+                              <p className="text-xs text-zinc-600 mb-3">{job.type}</p>
+                            )}
+                            {/* Bullets */}
+                            <ul className="space-y-1.5 mb-3">
+                              {job.bullets.map((bullet, bi) => (
+                                <li key={bi} className="flex gap-2 text-sm text-zinc-400">
+                                  <span className="text-zinc-600 mt-0.5 shrink-0">–</span>
+                                  <span>{bullet}</span>
+                                </li>
+                              ))}
+                            </ul>
+                            {/* Tech stack */}
                             <div className="flex flex-wrap gap-2">
                               {job.technologies.map((tech, techIndex) => (
                                 <span key={techIndex} className="text-xs text-zinc-500">
@@ -342,6 +399,7 @@ export default function Home() {
                               ))}
                             </div>
                           </li>
+                          <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-zinc-600 to-transparent" />
                         </AnimateIn>
                       );
                     })}
@@ -354,6 +412,7 @@ export default function Home() {
           <TabsContent value="tools">
             <div>
               <AnimateIn delay={0} variant="fadeUp">
+
                 <h2 className="text-md font-medium mb-4 text-zinc-100">Frontend</h2>
                 <section className="mb-12">
                   <div className="flex flex-wrap gap-y-6 gap-x-4 justify-start">
@@ -371,6 +430,7 @@ export default function Home() {
                 </section>
               </AnimateIn>
             </div>
+            <div className="my-2 h-px w-full bg-gradient-to-r from-transparent via-zinc-600 to-transparent" />
 
             <div>
               <AnimateIn delay={0.2} variant="fadeUp">
@@ -391,6 +451,7 @@ export default function Home() {
                 </section>
               </AnimateIn>
             </div>
+            <div className="my-2 h-px w-full bg-gradient-to-r from-transparent via-zinc-600 to-transparent" />
 
             <div>
               <AnimateIn delay={0.4} variant="fadeUp">
@@ -411,6 +472,7 @@ export default function Home() {
                 </section>
               </AnimateIn>
             </div>
+            <div className="my-2 h-px w-full bg-gradient-to-r from-transparent via-zinc-600 to-transparent" />
 
             <div>
               <AnimateIn delay={0.6} variant="fadeUp">
