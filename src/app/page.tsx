@@ -71,9 +71,9 @@ export default function Home() {
   ];
 
 
-  const experience = [
+  const experienceData = [
     {
-      role: "Backend Developer",
+      role: "Freelance Backend Developer",
       company: "Credible",
       period: "Oct 2025 — Present",
       type: "Remote · Finance",
@@ -84,6 +84,31 @@ export default function Home() {
         "Streamlined data ingestion pipelines to handle high-throughput financial transactions while ensuring consistency and fault tolerance.",
       ],
       technologies: ["TypeScript", "JavaScript", "Node.js", "MongoDB", "RabbitMQ", "Redis", "Sentry"],
+    }
+  ];
+
+  const contributionsData = [
+    {
+      title: "http: add req.signal to IncomingMessage",
+      repo: "nodejs / node",
+      period: "Apr 2026",
+      bullets: [
+        "Implemented a lazy AbortSignal (`req.signal`) on `IncomingMessage` class to provide a standard mechanism for cancelling asynchronous operations upon client disconnection.",
+        "Mirrored the Web Fetch API's `Request.signal` implementation, improving consistency across Node.js and browser environments.",
+      ],
+      technologies: ["C++", "JavaScript", "Node.js Internals"],
+      link: "https://github.com/nodejs/node/pull/62541"
+    },
+    {
+      title: "feat: add --dry-run flag to pixi lock command",
+      repo: "prefix-dev / pixi",
+      period: "Jan 2026",
+      bullets: [
+        "Added a `--dry-run` flag to the `pixi lock` command to allow users to verify lockfile changes without modifying existing files.",
+        "Ensured robust error handling and feedback when the lockfile cannot be updated or when dry-run conditions are not met.",
+      ],
+      technologies: ["Rust", "Pixi", "CLI Development"],
+      link: "https://github.com/prefix-dev/pixi/pull/5288"
     }
   ];
 
@@ -360,9 +385,10 @@ export default function Home() {
           <TabsContent value="experience">
             <AnimateIn delay={0} variant="fadeUp">
               <section className="mb-12">
+                <h2 className="text-md font-medium mb-6 text-zinc-100">Experience</h2>
                 <div className="space-y-8">
                   <ul className="space-y-8">
-                    {experience.map((job, index) => {
+                    {experienceData.map((job, index) => {
                       const delay = 0.1 + index * 0.1;
                       return (
                         <AnimateIn key={index} delay={delay} variant="fadeLeft">
@@ -400,6 +426,63 @@ export default function Home() {
                             </div>
                           </li>
                           <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-zinc-600 to-transparent" />
+                        </AnimateIn>
+                      );
+                    })}
+                  </ul>
+                </div>
+
+                <h2 className="text-md font-medium mb-6 mt-12 text-zinc-100">Contributions</h2>
+                <div className="space-y-8">
+                  <ul className="space-y-8">
+                    {contributionsData.map((contribution, index) => {
+                      const delay = 0.1 + index * 0.1;
+                      const content = (
+                        <li className="group hover:translate-x-1 transition-all duration-300 ease-out cursor-pointer">
+                          {/* Title row */}
+                          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-0.5">
+                            <h3 className="text-md font-medium text-zinc-100 group-hover:text-zinc-100 transition-colors">
+                              {contribution.title} at {contribution.repo}
+                            </h3>
+                            {contribution.period && (
+                              <span className="text-xs text-zinc-600 mt-0.5 sm:mt-0">{contribution.period}</span>
+                            )}
+                          </div>
+                          {/* Bullets */}
+                          <ul className="space-y-1.5 mb-3">
+                            {contribution.bullets.map((bullet, bi) => (
+                              <li key={bi} className="flex gap-2 text-sm text-zinc-400">
+                                <span className="text-zinc-600 mt-0.5 shrink-0">–</span>
+                                <span>{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                          {/* Tech stack */}
+                          <div className="flex flex-wrap gap-2">
+                            {contribution.technologies.map((tech, techIndex) => (
+                              <span key={techIndex} className="text-xs text-zinc-500">
+                                {tech}
+                                {techIndex < contribution.technologies.length - 1 ? " /" : ""}
+                              </span>
+                            ))}
+                          </div>
+                          <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-zinc-600 to-transparent" />
+                        </li>
+                      );
+
+                      return (
+                        <AnimateIn key={index} delay={delay} variant="fadeLeft">
+                          {contribution.link ? (
+                            <a
+                              href={contribution.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block no-underline"
+                              onClick={() => track(`${contribution.repo}_contribution_clicked`)}
+                            >
+                              {content}
+                            </a>
+                          ) : content}
                         </AnimateIn>
                       );
                     })}
