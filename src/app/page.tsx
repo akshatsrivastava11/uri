@@ -222,15 +222,13 @@ export default function Home() {
         }}
       />
       <div className="max-w-xl mx-auto px-4 py-8 flex flex-col gap-6">
-        <div className="text-sm text-zinc-400 ml-[30vw]">
+        <div className="flex justify-end text-sm text-zinc-400">
           <a href="./Resume (4).pdf"
             download="AkshatSrivastava.pdf"
+            className="hover:text-zinc-100 transition-colors"
           >
-
             Documented CV
-
           </a>
-
         </div>
         {/* Header */}
         <AnimateIn variant="fadeUp">
@@ -317,15 +315,15 @@ export default function Home() {
                       return (
                         <AnimateIn key={index} variant="fadeLeft" delay={delay}>
                           <li className="group hover:translate-x-1 transition-all duration-300 ease-out">
-                            <div className="flex items-baseline justify-between mb-1">
+                            <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-1">
                               <h3 className="text-md font-medium text-zinc-100">{project.title}</h3>
-                              <div className="flex flex-row gap-4">
+                              <div className="flex flex-wrap gap-x-4 gap-y-2">
                                 {project.github ? (
                                   <a
                                     href={project.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-100 transition-colors"
+                                    className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-100 transition-colors whitespace-nowrap"
                                     onClick={() => track(`${project.title}_github_clicked`)}
                                   >
                                     GitHub <ExternalLink className="w-3 h-3" />
@@ -341,7 +339,7 @@ export default function Home() {
                                     href={project.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-100 transition-colors"
+                                    className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-100 transition-colors whitespace-nowrap"
                                     onClick={() => track(`${project.title}_clicked`)}
                                   >
                                     View <ExternalLink className="w-3 h-3" />
@@ -354,7 +352,7 @@ export default function Home() {
                                     href={project.working_demo}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-100 transition-colors"
+                                    className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-100 transition-colors whitespace-nowrap"
                                     onClick={() => track(`${project.title}_demo_clicked`)}
                                   >
                                     Working Demo <ExternalLink className="w-3 h-3" />
@@ -500,7 +498,7 @@ export default function Home() {
                 <section className="mb-12">
                   <div className="flex flex-wrap gap-y-6 gap-x-4 justify-start">
                     {tools.frontend.map(({ Logo, title }, index) => (
-                      <AnimateIn key={index} variant="scale" delay={0.1 + index * 0.03} className="w-[calc(25%-12px)] sm:w-[calc(20%-13px)]">
+                      <AnimateIn key={index} variant="scale" delay={0.1 + index * 0.03} className="w-[calc(33.33%-12px)] sm:w-[calc(25%-13px)] md:w-[calc(20%-14px)]">
                         <div className="flex flex-col items-center group">
                           <div className="relative h-7 w-7 sm:h-8 sm:w-8 mb-3 transition-all duration-300 ease-out group-hover:scale-110 group-hover:-translate-y-1">
                             <Logo className="h-full w-full" />
@@ -521,7 +519,7 @@ export default function Home() {
                 <section className="mb-12">
                   <div className="flex flex-wrap gap-y-6 gap-x-4 justify-start">
                     {tools.Backend.map(({ Logo, title }, index) => (
-                      <AnimateIn key={index} variant="scale" delay={0.1 + index * 0.03} className="w-[calc(25%-12px)] sm:w-[calc(20%-13px)]">
+                      <AnimateIn key={index} variant="scale" delay={0.1 + index * 0.03} className="w-[calc(33.33%-12px)] sm:w-[calc(25%-13px)] md:w-[calc(20%-14px)]">
                         <div className="flex flex-col items-center group">
                           <div className="relative h-7 w-7 sm:h-8 sm:w-8 mb-3 transition-all duration-300 ease-out group-hover:scale-110 group-hover:-translate-y-1">
                             <Logo className="h-full w-full" />
@@ -542,7 +540,7 @@ export default function Home() {
                 <section className="mb-12">
                   <div className="flex flex-wrap gap-y-6 gap-x-6 justify-start">
                     {tools.languages.map(({ Logo, title }, index) => (
-                      <AnimateIn key={index} variant="scale" delay={0.1 + index * 0.03} className="w-[calc(25%-12px)] sm:w-[calc(20%-13px)]">
+                      <AnimateIn key={index} variant="scale" delay={0.1 + index * 0.03} className="w-[calc(33.33%-12px)] sm:w-[calc(25%-13px)] md:w-[calc(20%-14px)]">
                         <div className="flex flex-col items-center group">
                           <div className="relative h-7 w-7 sm:h-8 sm:w-8 mb-3 transition-all duration-300 ease-out group-hover:scale-110 group-hover:-translate-y-1">
                             <Logo className="h-full w-full" />
@@ -563,7 +561,7 @@ export default function Home() {
                 <section className="mb-12">
                   <div className="flex flex-wrap gap-y-6 gap-x-4 justify-start">
                     {tools.ToolingsAndInfra.map(({ Logo, title }, index) => (
-                      <AnimateIn key={index} variant="scale" delay={0.1 + index * 0.03} className="w-[calc(25%-12px)] sm:w-[calc(20%-13px)]">
+                      <AnimateIn key={index} variant="scale" delay={0.1 + index * 0.03} className="w-[calc(33.33%-12px)] sm:w-[calc(25%-13px)] md:w-[calc(20%-14px)]">
                         <div className="flex flex-col items-center group">
                           <div className="relative h-7 w-7 sm:h-8 sm:w-8 mb-3 transition-all duration-300 ease-out group-hover:scale-110 group-hover:-translate-y-1">
                             <Logo />
